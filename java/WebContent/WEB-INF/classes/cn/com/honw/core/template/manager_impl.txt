@@ -1,0 +1,61 @@
+package #{manager_impl_p};
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
+
+import org.clover.onetime.core.dao.Page;
+import #{dao_p}.I#{Entity}Dao;
+import #{entity_p}.#{Entity};
+import #{manager_p}.I#{Entity}Service;
+/**
+ * 
+ * 类名称：TopicServiceImpl
+ * 类描述：社区娱乐项目
+ * 创建人：toeasting@hotmail.com
+ * 创建时间：2011/04/26 21:13:37
+ * 修改人：toeasting@hotmail.com
+ * 修改时间：2011/04/26 21:13:37
+ * 修改备注：
+ * @version 0.5.0
+ */
+@Service
+@Transactional
+public class #{Entity}ServiceImpl implements I#{Entity}Service {
+	private I#{Entity}Dao dao;
+	
+	
+	public Page<#{Entity}> getPage(Page<#{Entity}> page){
+		page = dao.getPage(page);
+		return page;
+	}
+	
+	@Transactional(readOnly = true)
+	public List<#{Entity}> find#{Entity}List(){
+		return dao.findList();
+	}
+	
+	@Transactional(readOnly = true)
+	public #{Entity} findById(Long id) {
+		#{Entity} entity = dao.get(id);
+		return entity;
+	}
+
+	public void save(#{Entity} bean) {
+		dao.save(bean);
+	}
+
+	public void update(#{Entity} bean) {
+		dao.update(bean);
+	}
+
+	public void deleteById(Long id) {
+		dao.delete(id);
+	}
+
+	@Autowired
+	public void setDao(I#{Entity}Dao dao) {
+		this.dao = dao;
+	}
+}

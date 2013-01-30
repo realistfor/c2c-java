@@ -1,0 +1,39 @@
+/**
+ * 项目名：社区娱乐项目
+ * 包名：org.clover.onetime.service.#{Entity}
+ * 文件名：#{Entity}DaoImpl.java
+ * 版本信息：version V0.5
+ * 日期：2011/04/09-09:06:04
+ * Copyright (c) 2012一点私家公司-版权所有
+ */
+package #{dao_impl_p};
+
+import java.util.List;
+import org.clover.onetime.core.dao.Page;
+import org.springframework.stereotype.Repository;
+import org.clover.onetime.core.dao.AbstractDao;
+
+import #{dao_p}.I#{Entity}Dao;
+import #{entity_p}.#{Entity};
+
+@Repository
+public class #{Entity}DaoImpl extends AbstractDao<#{Entity}> implements I#{Entity}Dao {
+	
+	public Page<#{Entity}> getPage(Page<#{Entity}> page){
+		String sql = "FROM #{Entity} AS bean ";
+		return findPage(page, sql);
+	}
+	
+	public List<#{Entity}> findList(){
+		String sql = "FROM #{Entity} AS bean ";
+		return findList(sql);
+	}
+	
+	/**
+	 * 类的构造函数 #{Entity}DaoImpl.
+	 * @param entityClass
+	 */
+	public #{Entity}DaoImpl() {
+		super( #{Entity}.class );
+	}
+}
