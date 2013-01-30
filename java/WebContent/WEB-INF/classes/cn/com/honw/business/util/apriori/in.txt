@@ -1,3 +1,0 @@
-aardvark,true
-antelope,true,false,false,true,true
-%
